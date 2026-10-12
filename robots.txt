@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pontuallimpeza.github.io/pontual-limpeza/sitemap.xml

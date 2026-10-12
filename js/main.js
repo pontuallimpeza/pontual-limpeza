@@ -147,9 +147,10 @@ async function loadGallery() {
         }
       }
       used.add(f.name);
+      const label = prettify(f.name.replace(/\.(jpe?g|png|webp|gif)$/i,''));
       html += `<figure class="g-item g-single">
-        <img src="${f.download_url}" alt="${f.name}" loading="lazy">
-        <figcaption>${prettify(f.name.replace(/\.(jpe?g|png|webp|gif)$/i,''))}</figcaption>
+        <img src="${f.download_url}" alt="Serviço de ${label.toLowerCase()} - Pontual Limpeza e Manutenção em Campo Grande-MS" loading="lazy">
+        <figcaption>${label}</figcaption>
       </figure>`;
     }
     grid.innerHTML = html;
