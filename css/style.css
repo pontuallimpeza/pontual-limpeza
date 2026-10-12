@@ -137,9 +137,19 @@ ul { list-style: none; }
 }
 .hero-inner {
   position: relative; z-index: 2;
+<<<<<<< HEAD
   display: grid; grid-template-columns: 1.15fr .85fr; gap: 3rem; align-items: center;
   padding: 4.5rem 22px 4.5rem;
 }
+=======
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  max-width: 860px;
+  padding: 4.5rem 22px 4.5rem;
+}
+.hero .lead { margin-left: auto; margin-right: auto; }
+.hero-actions { justify-content: center; }
+.hero-badges { justify-content: center; }
+>>>>>>> 4287fa7 (Add site + galeria setup)
 .hero-copy h1 { color: #fff; margin-bottom: 1rem; }
 .hero-copy h1 .accent { color: var(--lime); }
 .hero .lead { color: rgba(255,255,255,.9); font-size: 1.08rem; max-width: 46ch; }
@@ -154,6 +164,7 @@ ul { list-style: none; }
   transform: rotate(-45deg);
 }
 
+<<<<<<< HEAD
 .hero-card {
   background: #fff; color: var(--ink);
   border-radius: var(--radius); padding: 1.8rem; box-shadow: var(--shadow-md);
@@ -162,6 +173,8 @@ ul { list-style: none; }
 .hero-card p { font-size: .9rem; margin-bottom: 1rem; }
 .quote-form { display: grid; gap: .7rem; }
 
+=======
+>>>>>>> 4287fa7 (Add site + galeria setup)
 input, select, textarea {
   width: 100%; font-family: var(--font); font-size: .96rem; color: var(--ink);
   padding: .8rem .9rem; border: 1.5px solid var(--line); border-radius: var(--radius-sm);
@@ -261,6 +274,7 @@ input:focus, select:focus, textarea:focus {
 /* ---------- Galeria ---------- */
 .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
 .g-item {
+<<<<<<< HEAD
   position: relative; min-height: 210px; border-radius: var(--radius-sm); overflow: hidden;
   display: grid; place-items: end start; padding: 1rem; box-shadow: var(--shadow-sm);
 }
@@ -279,6 +293,29 @@ input:focus, select:focus, textarea:focus {
   background-image: radial-gradient(rgba(255,255,255,.18) 1px, transparent 1px);
   background-size: 18px 18px; opacity: .5;
 }
+=======
+  position: relative; min-height: 220px; border-radius: var(--radius-sm); overflow: hidden;
+  display: grid; place-items: end start; padding: 1rem; box-shadow: var(--shadow-sm);
+  background: #dfe9e0;
+}
+.g-item img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+}
+.g-item figcaption {
+  position: relative; z-index: 2;
+  background: rgba(255,255,255,.92); color: var(--green-900); font-weight: 600; font-size: .85rem;
+  padding: .35rem .8rem; border-radius: 999px;
+}
+.g-pair { display: grid; grid-template-columns: 1fr 1fr; padding: 0; }
+.g-half { position: relative; }
+.g-half img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.g-half .g-tag {
+  position: absolute; top: 8px; left: 8px; z-index: 2;
+  background: rgba(0,0,0,.55); color: #fff; font-size: .7rem;
+  padding: .25rem .55rem; border-radius: 999px;
+}
+.gallery-empty { color: var(--muted); text-align: center; grid-column: 1/-1; padding: 1rem; }
+>>>>>>> 4287fa7 (Add site + galeria setup)
 
 /* ---------- Sobre ---------- */
 .about { display: grid; grid-template-columns: .9fr 1.1fr; gap: 3rem; align-items: center; }
@@ -336,6 +373,10 @@ input:focus, select:focus, textarea:focus {
 }
 .field { display: grid; gap: .35rem; }
 .field label { font-size: .85rem; font-weight: 600; color: #33463a; }
+<<<<<<< HEAD
+=======
+.field-row { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: .6rem; }
+>>>>>>> 4287fa7 (Add site + galeria setup)
 .form-note { font-size: .78rem; color: var(--muted); text-align: center; margin-top: -.2rem; }
 
 /* =========================================================
@@ -371,7 +412,11 @@ input:focus, select:focus, textarea:focus {
    RESPONSIVO
    ========================================================= */
 @media (max-width: 960px) {
+<<<<<<< HEAD
   .hero-inner { grid-template-columns: 1fr; gap: 2rem; padding: 3.2rem 22px; }
+=======
+  .hero-inner { padding: 3.2rem 22px; }
+>>>>>>> 4287fa7 (Add site + galeria setup)
   .tab-panel { grid-template-columns: 1fr; padding: 1.6rem; }
   .panel-media { min-height: 200px; }
   .about { grid-template-columns: 1fr; gap: 2rem; }
@@ -395,6 +440,10 @@ input:focus, select:focus, textarea:focus {
   .nav-link { padding: .85rem .6rem; border-bottom: 1px solid var(--line); border-radius: 0; }
   .nav-cta { margin: .8rem 0 0; }
   .brand-text small { display: none; }
+<<<<<<< HEAD
+=======
+  .field-row { grid-template-columns: 1fr; }
+>>>>>>> 4287fa7 (Add site + galeria setup)
   .callout-inner { margin-top: -1.6rem; padding: 1.3rem 1.3rem; }
   .callout-cta { width: 100%; }
   .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }

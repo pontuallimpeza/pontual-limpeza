@@ -43,14 +43,24 @@ function buildWhatsMessage(form) {
   const data = new FormData(form);
   const nome = (data.get('nome') || '').trim();
   const telefone = (data.get('telefone') || '').trim();
+<<<<<<< HEAD
   const endereco = (data.get('endereco') || '').trim();
+=======
+  const rua = (data.get('rua') || '').trim();
+  const bairro = (data.get('bairro') || '').trim();
+  const cidade = (data.get('cidade') || '').trim();
+>>>>>>> 4287fa7 (Add site + galeria setup)
   const servico = (data.get('servico') || '').trim();
   const mensagem = (data.get('mensagem') || '').trim();
 
   let texto = 'Ola! Gostaria de um orçamento.\n';
   if (nome) texto += `Nome: ${nome}\n`;
   if (telefone) texto += `Telefone: ${telefone}\n`;
+<<<<<<< HEAD
   if (endereco) texto += `Endereço do orçamento: ${endereco}\n`;
+=======
+  if (rua || bairro || cidade) texto += `Endereço do orçamento: ${[rua, bairro, cidade].filter(Boolean).join(' — ')}\n`;
+>>>>>>> 4287fa7 (Add site + galeria setup)
   if (servico) texto += `Servico: ${servico}\n`;
   if (mensagem) texto += `Detalhes: ${mensagem}\n`;
   return texto;
@@ -87,3 +97,76 @@ document.querySelectorAll('.tab-panel .btn[href="#contato"]').forEach((btn) => {
 // ---------- Ano no rodapé ----------
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
+<<<<<<< HEAD
+=======
+
+// ---------- Galeria (auto) ----------
+const GALLERY = {
+  user: 'pontuallimpeza',
+  repo: 'pontual-limpeza',
+  folder: 'galeria'
+};
+
+function prettify(name) {
+  return name.replace(/[-_.]+/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+}
+
+async function loadGallery() {
+  const grid = document.getElementById('galleryGrid');
+  if (!grid) return;
+  try {
+    const url = `https://api.github.com/repos/${GALLERY.user}/${GALLERY.repo}/contents/${GALLERY.folder}?ref=main`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('Nao foi possivel carregar a galeria');
+    const files = await res.json();
+    if (!Array.isArray(files) || files.length === 0) {
+      grid.innerHTML = '<p class="gallery-empty">Nenhuma foto ainda. Adicione na pasta galeria/.</p>';
+      return;
+    }
+    const imgs = files.filter(f =>
+      f.type === 'file' &&
+      /\.(jpg|jpeg|png|webp|gif)$/i.test(f.name) &&
+      !/^LEIA-ME\.txt$/i.test(f.name)
+    );
+    if (imgs.length === 0) {
+      grid.innerHTML = '<p class="gallery-empty">Nenhuma foto ainda. Adicione na pasta galeria/.</p>';
+      return;
+    }
+    imgs.sort((a,b) => a.name.localeCompare(b.name));
+    const used = new Set();
+    let html = '';
+    for (const f of imgs) {
+      if (used.has(f.name)) continue;
+      const m = f.name.match(/^(.+)-(antes|before)\.(jpe?g|png|webp|gif)$/i);
+      if (m) {
+        const base = m[1];
+        const ext = m[3].toLowerCase();
+        const mapa = {'jpg':'jpg','jpeg':'jpg','png':'png','webp':'webp','gif':'gif'};
+        const outros = imgs.filter(o =>
+          !used.has(o.name) &&
+          new RegExp(`^${base.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}-(depois|after)\\.${mapa[ext]||ext}$`, 'i').test(o.name)
+        );
+        if (outros.length > 0) {
+          const d = outros[0];
+          used.add(f.name); used.add(d.name);
+          html += `<figure class="g-item g-pair">
+            <div class="g-half"><img src="${f.download_url}" alt="${base} - antes" loading="lazy"><span class="g-tag">Antes</span></div>
+            <div class="g-half"><img src="${d.download_url}" alt="${base} - depois" loading="lazy"><span class="g-tag">Depois</span></div>
+          </figure>`;
+          continue;
+        }
+      }
+      used.add(f.name);
+      html += `<figure class="g-item g-single">
+        <img src="${f.download_url}" alt="${f.name}" loading="lazy">
+        <figcaption>${prettify(f.name.replace(/\.(jpe?g|png|webp|gif)$/i,''))}</figcaption>
+      </figure>`;
+    }
+    grid.innerHTML = html;
+  } catch (e) {
+    grid.innerHTML = '<p class="gallery-empty">Erro ao carregar galeria.</p>';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', loadGallery);
+>>>>>>> 4287fa7 (Add site + galeria setup)
