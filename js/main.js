@@ -43,24 +43,16 @@ function buildWhatsMessage(form) {
   const data = new FormData(form);
   const nome = (data.get('nome') || '').trim();
   const telefone = (data.get('telefone') || '').trim();
-<<<<<<< HEAD
-  const endereco = (data.get('endereco') || '').trim();
-=======
   const rua = (data.get('rua') || '').trim();
   const bairro = (data.get('bairro') || '').trim();
   const cidade = (data.get('cidade') || '').trim();
->>>>>>> 4287fa7 (Add site + galeria setup)
   const servico = (data.get('servico') || '').trim();
   const mensagem = (data.get('mensagem') || '').trim();
 
   let texto = 'Ola! Gostaria de um orçamento.\n';
   if (nome) texto += `Nome: ${nome}\n`;
   if (telefone) texto += `Telefone: ${telefone}\n`;
-<<<<<<< HEAD
-  if (endereco) texto += `Endereço do orçamento: ${endereco}\n`;
-=======
   if (rua || bairro || cidade) texto += `Endereço do orçamento: ${[rua, bairro, cidade].filter(Boolean).join(' — ')}\n`;
->>>>>>> 4287fa7 (Add site + galeria setup)
   if (servico) texto += `Servico: ${servico}\n`;
   if (mensagem) texto += `Detalhes: ${mensagem}\n`;
   return texto;
@@ -97,8 +89,6 @@ document.querySelectorAll('.tab-panel .btn[href="#contato"]').forEach((btn) => {
 // ---------- Ano no rodapé ----------
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
-<<<<<<< HEAD
-=======
 
 // ---------- Galeria (auto) ----------
 const GALLERY = {
@@ -169,4 +159,3 @@ async function loadGallery() {
 }
 
 document.addEventListener('DOMContentLoaded', loadGallery);
->>>>>>> 4287fa7 (Add site + galeria setup)
