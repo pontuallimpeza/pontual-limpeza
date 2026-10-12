@@ -58,7 +58,7 @@ function buildWhatsMessage(form) {
   return texto;
 }
 
-document.querySelectorAll('#quoteForm, #contactForm').forEach((form) => {
+document.querySelectorAll('#contactForm').forEach((form) => {
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     const texto = buildWhatsMessage(form);
